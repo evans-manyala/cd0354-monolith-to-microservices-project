@@ -1,0 +1,45 @@
+--- 
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  labels: 
+    app: backend-feed
+  name: backend-feed
+spec: 
+  replicas: 2
+  selector: 
+    matchLabels: 
+      app: backend-feed
+  template: 
+    metadata: 
+      labels: 
+        app: backend-feed
+    spec: 
+      containers: 
+        - 
+          envFrom: 
+            - 
+              configMapRef: 
+                name: udagram-env
+            - 
+              secretRef: 
+                name: udagramdb-env
+          image: "evansmanyala/udagram-api-feed:v1"
+          name: backend-feed
+          ports: 
+            - 
+              containerPort: 8080
+          # resources: 
+          #   limits: 
+          #     cpu: 500m
+          #   requests: 
+          #     cpu: 200m
+          volumeMounts: 
+            - 
+              mountPath: /root/.aws/
+              name: udagram-aws
+      volumes: 
+        - 
+          configMap: 
+            name: udagram-aws
+          name: udagram-aws
