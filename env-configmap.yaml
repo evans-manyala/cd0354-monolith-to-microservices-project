@@ -3,9 +3,9 @@ kind: ConfigMap
 metadata:
   name: udagram-env
 data:
-  POSTGRES_HOST: postgres1.cumgs9pvcvvf.us-east-1.rds.amazonaws.com
-  POSTGRES_DB: postgres1
-  AWS_BUCKET: monolith-microservice
+  POSTGRES_HOST: database1.ccpac7dcmgeo.us-east-1.rds.amazonaws.com
+  POSTGRES_DB: database1
+  AWS_BUCKET: monoliths-to-microservice
   AWS_REGION: us-east-1
   JWT_SECRET: testing
   URL: http://localhost:8100
